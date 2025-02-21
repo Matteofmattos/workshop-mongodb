@@ -1,10 +1,11 @@
 package com.matteof_mattos.workshopMongo.models.entities;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Objects;
-
+import java.util.ArrayList;
+import java.util.List;
 
 @Document(collection = "users")
 public class User {
@@ -15,6 +16,9 @@ public class User {
     private String name;
 
     private String email;
+
+    @DBRef(lazy = true)
+    private final List<Post> posts = new ArrayList<>();
 
     public User() {
     }
@@ -49,15 +53,7 @@ public class User {
         this.email = email;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(email, user.email);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, email);
+    public boolean addPost(Post post) {
+        return this.posts.add(post);
     }
 }
