@@ -1,12 +1,14 @@
 package com.matteof_mattos.workshopMongo.repositories;
 
 import com.matteof_mattos.workshopMongo.models.entities.Post;
-import com.matteof_mattos.workshopMongo.models.entities.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface PostRepository extends MongoRepository<Post,String> {
 
+    List<Post> findByTitleContainingIgnoreCase(String title);
 
 }

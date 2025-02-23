@@ -38,11 +38,11 @@ public class TestConfig {
         userRepository.saveAll(Arrays.asList(user1,user2,user3));
 
         Post post1 = new Post(null, new Author(user2), Instant.parse("2021-02-13T11:15:01Z"),
-                "Partiu viagem!!", "Vou viajar para São Paulo. Abraços!");
+                "Vou viajar para São Paulo. Abraços!", "Partiu viagem!!");
 
 
         Post post2 = new Post(null, new Author(user1), Instant.parse("2021-02-14T10:05:49Z"),
-                "Bom dia", "Acordei feliz hoje!");
+                "Acordei feliz hoje!", "Bom dia!");
 
 
         Comment c1 = new Comment("Boa viagem!", Instant.parse("2021-02-13T14:30:01Z"), new Author(user3));
